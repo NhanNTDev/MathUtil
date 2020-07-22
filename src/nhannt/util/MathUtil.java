@@ -21,11 +21,14 @@ public class MathUtil {
     //thực ra 15! to lắm rồi, nên ta chỉ tính giai thừa 15 trở lại
     public static long computeFactorial(int n) {
         
-        long result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
-        }
-        return result;
+        if(n < 0 || n > 15)
+            throw new IllegalArgumentException("Invalid input. n must be >= 0 ");
+        if(n == 0 || n == 1)
+            return 1;
+        //Điều kiện dừng của đệ quy
+        //Sống sót đến lệnh chổ này thì n chắc chắn rới vào 2...15
+        //không cần else
+        return n * computeFactorial(n - 1); //n * (n - 1)!
     }
 
     
